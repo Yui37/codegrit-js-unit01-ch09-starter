@@ -19,17 +19,23 @@ let counter = 0;
 const changePicture = () =>{
     // 5W1H when what how
     // １、画像要素を取得する　DOM　getElementByIdを使う
-    // document.getElementById('pics').src = picArray[0].src;
-    // document.getElementById('pic-title').innerHTML = picArray[0].title;
+    counter++;
+
+    document.getElementById('pics').src = picArray[counter].src;
+    document.getElementById('pic-title').innerHTML = picArray[counter].title;
+
     console.log(picArray[counter].title);
     console.log(picArray[counter].src);
+
     // if文で条件分岐する
-    if(){ //写真がひとつづつ読み込まれるとき（写真が変化する時）
-
+    if( counter <= 5 ){ //写真がひとつづつ読み込まれるとき（写真が変化する時）
+        img.src = picArray[counter].src + picArray[counter].title;
+        
     }else{//ブラウザーが読み込まれたとき（初期の画像）
-
+        img.src = picArray[0].src + picArray[0].title;
     }
 }
+
 changePicture();
 
 // ボタンを押してスライドショーを再生・停止する関数
