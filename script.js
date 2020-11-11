@@ -8,7 +8,6 @@ const picArray = [
     {src: './images/pic_5.jpg', title: 'picture 5'},
     {src: './images/pic_6.jpg', title: 'picture 6'}
     ];
-    
 //スライドショーが再生中かどうかを記録しておくためのグローバル変数
 let playingID = 0;
 let counter = 0;
@@ -16,23 +15,20 @@ let counter = 0;
 //写真を切り替える関数
 //関数名「changePicture」
 // thisを使うならアロー関数は使えない（thisの本来の動きをしないから）
-const changePicture = () =>{
+const changePicture = function(){
     // 5W1H when what how
     // １、画像要素を取得する　DOM　getElementByIdを使う
-    counter++;
-
-    document.getElementById('pics').src = picArray[counter].src;
-    document.getElementById('pic-title').innerHTML = picArray[counter].title;
-
-    console.log(picArray[counter].title);
-    console.log(picArray[counter].src);
 
     // if文で条件分岐する
-    if( counter <= 5 ){ //写真がひとつづつ読み込まれるとき（写真が変化する時）
-        img.src = picArray[counter].src + picArray[counter].title;
-        
+    if(counter < picArray.length){ //写真がひとつづつ読み込まれるとき（写真が変化する時)
+        document.getElementById('pics').src = picArray[counter].src;
+        document.getElementById('pic-title').innerHTML = picArray[counter].title;
+
+        counter++;
     }else{//ブラウザーが読み込まれたとき（初期の画像）
-        img.src = picArray[0].src + picArray[0].title;
+        document.getElementById('pics').src = picArray[0].src;
+        document.getElementById('pic-title').innerHTML = picArray[0].title;
+// バグ出る　カウンター変数いる
     }
 }
 
@@ -40,8 +36,15 @@ changePicture();
 
 // ボタンを押してスライドショーを再生・停止する関数
 //関数名「playSlidedeshow」
-document.getElementById('playButton');
 
-// let playSlidedeshow = () => {
-// setInterval(function() {},2000);
-// }
+const playSlidedeshow = function(){
+    // フロー　（playボタンを押すと画像が２秒毎に１から６に変わる）（stopボタンを押すと画像の動きが停止する）
+    if(){//playボタンを押したら
+        document.getElementById('playButton').innerHTML ='stop';
+        playingID = setInterval(changePicture,2000);
+
+    }else{
+        document.getElementById('playButton').innerHTML ='play';
+        clearInterval(playingID);
+    }
+}
