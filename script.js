@@ -10,6 +10,8 @@ const picArray = [
     ];
 //スライドショーが再生中かどうかを記録しておくためのグローバル変数
 let playingID = 0;
+console.log(playingID);
+
 let counter = 0;
 
 //写真を切り替える関数
@@ -32,17 +34,16 @@ const changePicture = function(){
     }
 }
 
-changePicture();
-
 // ボタンを押してスライドショーを再生・停止する関数
 //関数名「playSlidedeshow」
 
 const playSlidedeshow = function(){
     // フロー　（playボタンを押すと画像が２秒毎に１から６に変わる）（stopボタンを押すと画像の動きが停止する）
-    if(){//playボタンを押したら
+    if(playingID < picArray.length){//playボタンを押したら
         document.getElementById('playButton').innerHTML ='stop';
-        playingID = setInterval(changePicture,2000);
-
+        setInterval(changePicture,2000);
+        // playingID = setInterval(changePicture,2000);
+        playingID++;
     }else{
         document.getElementById('playButton').innerHTML ='play';
         clearInterval(playingID);
