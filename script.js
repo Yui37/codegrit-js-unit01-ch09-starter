@@ -10,7 +10,6 @@ const picArray = [
     ];
 //スライドショーが再生中かどうかを記録しておくためのグローバル変数
 let playingID = 0;
-console.log(playingID);
 
 let counter = 0;
 
@@ -30,22 +29,28 @@ const changePicture = function(){
     }else{//ブラウザーが読み込まれたとき（初期の画像）
         document.getElementById('pics').src = picArray[0].src;
         document.getElementById('pic-title').innerHTML = picArray[0].title;
-// バグ出る　カウンター変数いる
+
+        counter = 0;// バグ出る　カウンター変数いる ifに書いたじょうほうはelseにもかく
     }
 }
 
 // ボタンを押してスライドショーを再生・停止する関数
-//関数名「playSlidedeshow」
+//関数名「playSlideshow」
 
-const playSlidedeshow = function(){
+const playSlideshow = function(){
     // フロー　（playボタンを押すと画像が２秒毎に１から６に変わる）（stopボタンを押すと画像の動きが停止する）
-    if(playingID < picArray.length){//playボタンを押したら
-        document.getElementById('playButton').innerHTML ='stop';
-        setInterval(changePicture,2000);
-        // playingID = setInterval(changePicture,2000);
-        playingID++;
-    }else{
-        document.getElementById('playButton').innerHTML ='play';
+    console.log('関数playSlideshow直下');
+    if(playingID == 0){//playボタンを押したら　０
+        console.log('if文内');
+        palyingID = setInterval(changePicture,2000);
+        document.getElementById('playButton').innerHTML ='STOP';
+        console.log(playingID);
+    }else{//ブラウザ読み込まれたら　０以外
+        console.log('else文内');
         clearInterval(playingID);
+        document.getElementById('playButton').innerHTML ='PLAY';
+        playingID = 0;
+        console.log(playingID);
     }
+    console.log('if文構文直下');
 }
