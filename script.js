@@ -27,10 +27,10 @@ const changePicture = function(){
 
         counter++;
     }else{//ブラウザーが読み込まれたとき（初期の画像）
-        document.getElementById('pics').src = picArray[0].src;
-        document.getElementById('pic-title').innerHTML = picArray[0].title;
+        document.getElementById('pics').src = picArray[1].src;
+        document.getElementById('pic-title').innerHTML = picArray[1].title;
 
-        counter = 0;// バグ出る　カウンター変数いる ifに書いたじょうほうはelseにもかく
+        counter = 0;// バグ出る　カウンター変数いる ifに書いた情報はelseにもかく
     }
 }
 
@@ -42,7 +42,7 @@ const playSlideshow = function(){
     console.log('関数playSlideshow直下');
     if(playingID == 0){//playボタンを押したら　０
         console.log('if文内');
-        palyingID = setInterval(changePicture,2000);
+        playingID = setInterval(changePicture,2000);
         document.getElementById('playButton').innerHTML ='STOP';
         console.log(playingID);
     }else{//ブラウザ読み込まれたら　０以外
