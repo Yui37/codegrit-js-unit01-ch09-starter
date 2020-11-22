@@ -27,10 +27,10 @@ const changePicture = function(){
 
         counter++;
     }else{//ブラウザーが読み込まれたとき（初期の画像）
-        document.getElementById('pics').src = picArray[1].src;
-        document.getElementById('pic-title').innerHTML = picArray[1].title;
+        document.getElementById('pics').src = picArray[0].src;
+        document.getElementById('pic-title').innerHTML = picArray[0].title;
 
-        counter = 0;// バグ出る　カウンター変数いる ifに書いた情報はelseにもかく
+        counter = 1;// バグ出る　カウンター変数いる ifに書いた情報はelseにもかく
     }
 }
 
